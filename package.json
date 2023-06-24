@@ -1,0 +1,30 @@
+{
+  "name": "bajo-web",
+  "version": "0.0.1",
+  "description": "Web Server for Bajo Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardhi/bajo-web.git"
+  },
+  "keywords": [
+    "webserver",
+    "bajo",
+    "framework",
+    "fastify",
+    "modular"
+  ],
+  "author": "Ardhi Lukianto <ardhi@lukianto.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ardhi/bajo-web/issues"
+  },
+  "homepage": "https://github.com/ardhi/bajo-web#readme",
+  "dependencies": {
+    "fastify": "^4.18.0"
+  }
+}
