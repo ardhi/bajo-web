@@ -3,6 +3,7 @@
     "port": 7777
   },
   "factory": {
+    "trustProxy": true
   },
   "dependency": ["bajo-extra"]
 }
