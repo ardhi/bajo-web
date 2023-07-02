@@ -5,5 +5,5 @@
   "factory": {
     "trustProxy": true
   },
-  "dependency": ["bajo-extra"]
+  "dependencies": ["bajo-extra"]
 }
