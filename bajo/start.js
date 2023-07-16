@@ -4,10 +4,11 @@ import routeHook from '../lib/route-hook.js'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
-  const [_, queryString] = await importPkg('lodash::bajo', 'query-string::bajo-extra')
+  const { cloneDeep } = await importPkg('lodash-es::bajo')
+  const queryString = await importPkg('query-string::bajo-extra')
   const opts = getConfig('bajoWeb')
-  const optsFactory = _.cloneDeep(opts.factory)
-  const optsServer = _.cloneDeep(opts.server)
+  const optsFactory = cloneDeep(opts.factory)
+  const optsServer = cloneDeep(opts.server)
   optsFactory.logger = this.bajoLogger.instance.child(
     {},
     { msgPrefix: '[bajoWeb] ' }
@@ -19,7 +20,7 @@ async function start () {
   this.bajoWeb.instance = instance
   await appHook.call(this)
   await routeHook.call(this)
-  await instance.listen(_.cloneDeep(optsServer))
+  await instance.listen(cloneDeep(optsServer))
 }
 
 export default start
