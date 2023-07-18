@@ -4,8 +4,8 @@ import routeHook from '../lib/route-hook.js'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
-  const { cloneDeep } = await importPkg('lodash-es::bajo')
-  const queryString = await importPkg('query-string::bajo-extra')
+  const { cloneDeep } = await importPkg('lodash-es')
+  const queryString = await importPkg('bajo-extra:query-string')
   const opts = getConfig('bajoWeb')
   const optsFactory = cloneDeep(opts.factory)
   const optsServer = cloneDeep(opts.server)
