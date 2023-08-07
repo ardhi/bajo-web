@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import appHook from '../lib/app-hook.js'
 import routeHook from '../lib/route-hook.js'
+import app from '../lib/app.js'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
@@ -20,6 +21,7 @@ async function start () {
   this.bajoWeb.instance = instance
   await appHook.call(this)
   await routeHook.call(this)
+  await app.call(this)
   await instance.listen(cloneDeep(optsServer))
 }
 
