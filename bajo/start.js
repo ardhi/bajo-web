@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 import appHook from '../lib/app-hook.js'
 import routeHook from '../lib/route-hook.js'
-import bootChildApp from '../lib/boot-child-app.js'
+import bootPlugin from '../lib/boot-plugin.js'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
@@ -18,10 +18,11 @@ async function start () {
   optsFactory.querystringParser = str => queryString.parse(str)
 
   const instance = fastify(optsFactory)
+  instance.scope = this
   this.bajoWeb.instance = instance
   await appHook.call(this)
   await routeHook.call(this)
-  await bootChildApp.call(this)
+  await bootPlugin.call(this)
   await instance.listen(cloneDeep(optsServer))
 }
 
