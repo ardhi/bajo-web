@@ -1,7 +1,8 @@
 import fastify from 'fastify'
 import appHook from '../lib/app-hook.js'
-import routeHook from '../lib/route-hook.js'
-import bootPlugin from '../lib/boot-plugin.js'
+// import routeHook from '../lib/route-hook.js'
+import bootApp from '../lib/boot-app.js'
+// import decorator from '../lib/decorator.js'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
@@ -16,14 +17,16 @@ async function start () {
   )
   optsFactory.genReqId = req => generateId()
   optsFactory.querystringParser = str => queryString.parse(str)
+  optsFactory.disableRequestLogging = true
 
   const instance = fastify(optsFactory)
-  instance.scope = this
   this.bajoWeb.instance = instance
+  // await decorator.call(this)
   await appHook.call(this)
-  await routeHook.call(this)
-  await bootPlugin.call(this)
+  // await routeHook.call(this)
+  await bootApp.call(this)
   await instance.listen(cloneDeep(optsServer))
+  await instance.printRoutes()
 }
 
 export default start
