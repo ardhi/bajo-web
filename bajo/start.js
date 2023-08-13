@@ -1,8 +1,8 @@
 import fastify from 'fastify'
 import appHook from '../lib/app-hook.js'
-// import routeHook from '../lib/route-hook.js'
+import routeHook from '../lib/route-hook.js'
 import bootApp from '../lib/boot-app.js'
-// import decorator from '../lib/decorator.js'
+import fastifySensible from '@fastify/sensible'
 
 async function start () {
   const { importPkg, getConfig, generateId } = this.bajo.helper
@@ -21,12 +21,11 @@ async function start () {
 
   const instance = fastify(optsFactory)
   this.bajoWeb.instance = instance
-  // await decorator.call(this)
+  instance.register(fastifySensible)
   await appHook.call(this)
-  // await routeHook.call(this)
+  await routeHook.call(this)
   await bootApp.call(this)
   await instance.listen(cloneDeep(optsServer))
-  await instance.printRoutes()
 }
 
 export default start
