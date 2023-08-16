@@ -1,6 +1,8 @@
 async function onResponse (ctx, req, reply) {
   const { log } = this.bajo.helper
-  const method = reply.statusCode > 200 ? 'error' : 'info'
+  let method = 'info'
+  if (reply.statusCode >= 300 && reply.statusCode < 400) method = 'warn'
+  else if (reply.statusCode >= 400) method = 'error'
   log[method]('> %s:%s with a %d-status took %dms', req.method, req.url, reply.statusCode,
     reply.getResponseTime().toFixed(3))
 }
