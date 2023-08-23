@@ -5,7 +5,7 @@ import bootApp from '../lib/boot-app.js'
 import fastifySensible from '@fastify/sensible'
 
 async function start () {
-  const { importPkg, getConfig, generateId } = this.bajo.helper
+  const { importPkg, getConfig, generateId, runHook } = this.bajo.helper
   const { cloneDeep } = await importPkg('lodash-es')
   const queryString = await importPkg('bajo-extra:query-string')
   const opts = getConfig('bajoWeb')
@@ -21,10 +21,12 @@ async function start () {
 
   const instance = fastify(optsFactory)
   this.bajoWeb.instance = instance
-  instance.register(fastifySensible)
+  await runHook('bajoWeb:afterCreateContext', instance)
+  await instance.register(fastifySensible)
   await appHook.call(this)
   await routeHook.call(this)
   await bootApp.call(this)
+  await runHook('bajoWeb:afterBootApp')
   await instance.listen(cloneDeep(optsServer))
 }
 
