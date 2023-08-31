@@ -20,6 +20,7 @@ async function start () {
   optsFactory.disableRequestLogging = true
 
   const instance = fastify(optsFactory)
+  instance.decorateRequest('lang', null)
   this.bajoWeb.instance = instance
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(fastifySensible)

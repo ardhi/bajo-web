@@ -5,5 +5,17 @@
   "factory": {
     "trustProxy": true
   },
+  "qsKey": {
+    "query": "query",
+    "page": "page",
+    "limit": "limit",
+    "sort": "sort",
+    "fields": "fields",
+    "lang": "lang"
+  },
+  "dbRepo": {
+    "dataOnly": false,
+    "patchEnabled": false
+  },
   "dependencies": ["bajo-extra", "bajo-logger"]
 }
