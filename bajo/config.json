@@ -17,10 +17,6 @@
     "dataOnly": false,
     "patchEnabled": false
   },
-  "i18nDetector": {
-    "qs": true,
-    "header": false,
-    "path": false
-  },
+  "printRoutes": false,
   "dependencies": ["bajo-extra", "bajo-logger"]
 }
