@@ -18,7 +18,7 @@ async function start () {
     { msgPrefix: '[bajoWeb] ' }
   )
   optsFactory.genReqId = req => generateId()
-  optsFactory.querystringParser = str => queryString.parse(str)
+  optsFactory.querystringParser = str => queryString.parse(str, { parseNumbers: true, parseBooleans: true })
   optsFactory.disableRequestLogging = true
 
   const instance = fastify(optsFactory)
