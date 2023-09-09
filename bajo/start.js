@@ -7,7 +7,7 @@ import fastifySensible from '@fastify/sensible'
 import fastifyNoicon from 'fastify-no-icon'
 
 async function start () {
-  const { importPkg, getConfig, generateId, runHook, error } = this.bajo.helper
+  const { importPkg, getConfig, generateId, runHook } = this.bajo.helper
   const { cloneDeep } = await importPkg('lodash-es')
   const queryString = await importPkg('bajo-extra:query-string')
   const cfg = getConfig('bajoWeb')
@@ -24,9 +24,6 @@ async function start () {
   const instance = fastify(optsFactory)
   instance.decorateRequest('lang', null)
   instance.decorateRequest('langDetector', null)
-  instance.decorateReply('redirectTo', redirect => {
-    throw error('redirect', { redirect })
-  })
   this.bajoWeb.instance = instance
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(fastifySensible)
