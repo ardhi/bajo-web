@@ -25,6 +25,7 @@ async function start () {
   instance.decorateRequest('lang', null)
   instance.decorateRequest('langDetector', null)
   this.bajoWeb.instance = instance
+  await instance.decorateRequest('site', null)
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(fastifySensible)
   await instance.register(fastifyNoicon)

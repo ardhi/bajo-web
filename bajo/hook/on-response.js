@@ -1,5 +1,5 @@
 const onResponse = {
-  level: 10,
+  level: 5,
   handler: async function onResponse (ctx, req, reply) {
     const { log } = this.bajo.helper
     let method = 'info'

@@ -18,5 +18,9 @@
     "patchEnabled": false
   },
   "printRoutes": false,
+  "siteInfo": {
+    "title": "My Website",
+    "orgName": "My Organization"
+  },
   "dependencies": ["bajo-extra", "bajo-logger"]
 }
