@@ -22,5 +22,11 @@
     "title": "My Website",
     "orgName": "My Organization"
   },
+  "multipart": {
+    "limits": {
+      "parts": 100,
+      "fileSize": 10485760
+    }
+  },
   "dependencies": ["bajo-extra", "bajo-logger"]
 }
