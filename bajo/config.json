@@ -23,6 +23,7 @@
     "orgName": "My Organization"
   },
   "multipart": {
+    "attachFieldsToBody": true,
     "limits": {
       "parts": 100,
       "fileSize": 10485760

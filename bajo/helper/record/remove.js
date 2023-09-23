@@ -1,6 +1,6 @@
 async function remove ({ repo, req, reply, id }) {
   const { pascalCase, getPlugin } = this.bajo.helper
-  await getPlugin('bajoDb') // ensure bajoDb is loaded
+  getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordRemove } = this.bajoDb.helper
   const { getParams } = this.bajoWeb.helper
   const params = await getParams(req, 'repo', 'id')
