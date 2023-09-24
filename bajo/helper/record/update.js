@@ -2,7 +2,7 @@ async function update ({ repo, req, reply, id, body, options = {} }) {
   const { pascalCase, getPlugin, importPkg } = this.bajo.helper
   const { merge } = await importPkg('lodash-es')
   getPlugin('bajoDb') // ensure bajoDb is loaded
-  const { recordUpdate, attachmentGet } = this.bajoDb.helper
+  const { recordUpdate, attachmentFind } = this.bajoDb.helper
   const { getParams } = this.bajoWeb.helper
   const params = await getParams(req, 'repo', 'id')
   const { fields } = params
@@ -14,7 +14,7 @@ async function update ({ repo, req, reply, id, body, options = {} }) {
   const name = pascalCase(repo)
   const ret = await recordUpdate(name, id, body, opts)
   const { attachment, stats, mimeType } = req.query
-  if (attachment) ret.data._attachment = await attachmentGet(name, id, { stats, mimeType })
+  if (attachment) ret.data._attachment = await attachmentFind(name, id, { stats, mimeType })
   return ret
 }
 
