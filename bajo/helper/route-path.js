@@ -5,7 +5,7 @@ function routePath (name, { query = {}, base = 'bajoWebMpa', params = {} } = {})
   const cfg = getConfig(base)
   const [ns, fullPath] = breakNsPath(name)
   let [path, qs] = fullPath.split('?')
-  let url = cfg.i18nDetectors.includes('path') ? `/${params.lang ?? ''}${routeDir(ns)}${path}` : `${routeDir(ns)}${path}`
+  let url = cfg.i18n.detectors.includes('path') ? `/${params.lang ?? ''}${routeDir(ns)}${path}` : `${routeDir(ns)}${path}`
   if (this.bajoWeb.vars) {
     const { queryString, isEmpty } = this.bajoWeb.vars
     qs = defaultsDeep(query, queryString.parse(qs))
