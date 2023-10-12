@@ -1,13 +1,13 @@
-async function find ({ repo, req, reply }) {
+async function find ({ coll, req, reply }) {
   const { pascalCase, getPlugin } = this.bajo.helper
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordFind, attachmentFind } = this.bajoDb.helper
   const { getFilter, getParams } = this.bajoWeb.helper
-  const params = await getParams(req, 'repo')
+  const params = await getParams(req, 'coll')
   const { fields } = params
-  repo = repo ?? params.repo
+  coll = coll ?? params.coll
   const filter = await getFilter(req)
-  const name = pascalCase(repo)
+  const name = pascalCase(coll)
   const ret = await recordFind(name, filter, { fields, dataOnly: false, req })
   const { attachment, stats, mimeType } = req.query
   if (attachment) {
