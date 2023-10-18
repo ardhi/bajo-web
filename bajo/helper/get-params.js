@@ -3,7 +3,9 @@ async function getParams (req, ...items) {
   const { map, trim, get, each } = await importPkg('lodash-es')
   const cfg = getConfig('bajoWeb')
   let fields
-  if (req.query.fields) fields = map(req.query.fields.split(','), i => trim(i))
+  req.query = req.query ?? {}
+  req.params = req.params ?? {}
+  if (req.query.fields) fields = map((req.query.fields ?? '').split(','), i => trim(i))
   const params = {
     fields,
     dataOnly: get(cfg, 'dbColl.dataOnly', false),
