@@ -6,7 +6,7 @@ async function get ({ coll, req, reply, id }) {
   const params = await getParams(req, 'coll', 'id')
   const { fields } = params
   coll = coll ?? params.coll
-  id = id ?? params.id
+  id = id ?? params.id ?? req.query.id
   const name = pascalCase(coll)
   const ret = await recordGet(name, id, { fields, dataOnly: false, req })
   const { attachment, stats, mimeType } = req.query
