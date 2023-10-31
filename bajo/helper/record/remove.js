@@ -6,7 +6,7 @@ async function remove ({ coll, req, reply, id }) {
   const params = await getParams(req, 'coll', 'id')
   const { fields } = params
   coll = coll ?? params.coll
-  id = id ?? params.id
+  id = id ?? params.id ?? req.query.id
   return await recordRemove(pascalCase(coll), id, { fields, dataOnly: false, req })
 }
 
