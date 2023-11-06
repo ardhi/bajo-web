@@ -6,6 +6,7 @@
     "trustProxy": true
   },
   "qsKey": {
+    "bbox": "bbox",
     "query": "query",
     "page": "page",
     "limit": "limit",
