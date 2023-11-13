@@ -29,7 +29,8 @@ async function getFilter (req) {
   const limit = req.query[cfg.qsKey.limit]
   const page = req.query[cfg.qsKey.page]
   const sort = req.query[cfg.qsKey.sort]
-  return { query, limit, page, sort, bbox }
+  const noCount = req.query[cfg.qsKey.noCount]
+  return { query, limit, page, sort, bbox, noCount }
 }
 
 export default getFilter

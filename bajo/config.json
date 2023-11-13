@@ -7,6 +7,7 @@
   },
   "qsKey": {
     "bbox": "bbox",
+    "noCount": "noCount",
     "bboxLatField": "bboxLatField",
     "bboxLngField": "bboxLngField",
     "query": "query",
