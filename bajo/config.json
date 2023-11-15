@@ -11,6 +11,7 @@
     "bboxLatField": "bboxLatField",
     "bboxLngField": "bboxLngField",
     "query": "query",
+    "match": "match",
     "page": "page",
     "limit": "limit",
     "sort": "sort",
