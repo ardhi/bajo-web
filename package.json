@@ -1,6 +1,6 @@
 {
   "name": "bajo-web",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Web Server for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/ardhi/bajo-web#readme",
   "dependencies": {
+    "@fastify/accepts": "^4.2.0",
     "@fastify/cookie": "^9.1.0",
     "@fastify/flash": "^5.1.0",
     "@fastify/formbody": "^7.4.0",
