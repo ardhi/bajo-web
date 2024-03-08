@@ -1,6 +1,6 @@
 {
   "name": "bajo-web",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Web Server for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -25,15 +25,20 @@
   },
   "homepage": "https://github.com/ardhi/bajo-web#readme",
   "dependencies": {
-    "@fastify/accepts": "^4.2.0",
-    "@fastify/cookie": "^9.1.0",
+    "@fastify/accepts": "^4.3.0",
+    "@fastify/compress": "^6.5.0",
+    "@fastify/cookie": "^9.2.0",
+    "@fastify/cors": "^8.5.0",
     "@fastify/flash": "^5.1.0",
     "@fastify/formbody": "^7.4.0",
+    "@fastify/helmet": "^11.1.1",
     "@fastify/multipart": "^7.7.3",
+    "@fastify/rate-limit": "^9.1.0",
     "@fastify/sensible": "^5.5.0",
-    "@fastify/session": "^10.5.0",
-    "@fastify/static": "^6.11.2",
-    "fastify": "^4.24.3",
+    "@fastify/session": "^10.7.0",
+    "@fastify/static": "^6.12.0",
+    "@fastify/under-pressure": "^8.3.0",
+    "fastify": "^4.25.2",
     "fastify-no-icon": "^6.0.0"
   }
 }

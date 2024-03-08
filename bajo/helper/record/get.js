@@ -1,4 +1,4 @@
-async function get ({ coll, req, reply, id }) {
+async function get ({ coll, req, reply, id, options = {} }) {
   const { pascalCase, getPlugin } = this.bajo.helper
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordGet, attachmentFind } = this.bajoDb.helper

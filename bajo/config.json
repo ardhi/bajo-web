@@ -7,11 +7,11 @@
   },
   "qsKey": {
     "bbox": "bbox",
-    "noCount": "noCount",
     "bboxLatField": "bboxLatField",
     "bboxLngField": "bboxLngField",
     "query": "query",
     "match": "match",
+    "skip": "skip",
     "page": "page",
     "limit": "limit",
     "sort": "sort",
@@ -20,6 +20,7 @@
   },
   "dbColl": {
     "dataOnly": false,
+    "noCount": false,
     "patchEnabled": false
   },
   "printRoutes": false,
@@ -34,5 +35,7 @@
       "fileSize": 10485760
     }
   },
+  "noIcon": true,
+  "underPressure": false,
   "dependencies": ["bajo-extra", "bajo-logger"]
 }
