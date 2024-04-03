@@ -37,5 +37,5 @@
   },
   "noIcon": true,
   "underPressure": false,
-  "dependencies": ["bajo-extra", "bajo-logger"]
+  "dependencies": ["bajo-logger"]
 }
