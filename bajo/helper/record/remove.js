@@ -1,10 +1,11 @@
 async function remove ({ coll, req, reply, id, options = {} }) {
-  const { pascalCase, getPlugin } = this.bajo.helper
+  const { pascalCase, getPlugin, isSet } = this.bajo.helper
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordRemove } = this.bajoDb.helper
   const { getParams } = this.bajoWeb.helper
   const params = await getParams(req, 'coll', 'id')
-  const { fields } = params
+  let { fields } = params
+  if (isSet(options.fields)) fields = options.fields
   coll = coll ?? params.coll
   id = id ?? params.id ?? req.query.id
   return await recordRemove(pascalCase(coll), id, { fields, dataOnly: false, req })

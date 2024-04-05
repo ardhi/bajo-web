@@ -1,6 +1,6 @@
 {
   "name": "bajo-web",
-  "version": "0.2.8",
+  "version": "0.2.10",
   "description": "Web Server for Bajo Framework",
   "main": "index.js",
   "scripts": {

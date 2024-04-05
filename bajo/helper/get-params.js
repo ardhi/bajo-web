@@ -9,7 +9,7 @@ async function getParams (req, ...items) {
   const params = {
     fields,
     dataOnly: get(cfg, 'dbColl.dataOnly', false),
-    noCount: get(cfg, 'dbColl.noCount', false),
+    noCount: get(cfg, 'dbColl.noCount', true),
     body: req.body
   }
   each(items, i => {

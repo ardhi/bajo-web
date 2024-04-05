@@ -20,7 +20,7 @@
   },
   "dbColl": {
     "dataOnly": false,
-    "noCount": false,
+    "noCount": true,
     "patchEnabled": false
   },
   "printRoutes": false,
