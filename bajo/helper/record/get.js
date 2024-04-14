@@ -1,16 +1,13 @@
+import prepCrud from '../../../lib/prep-crud.js'
+
 async function get ({ coll, req, reply, id, options = {} }) {
-  const { pascalCase, getPlugin, isSet } = this.bajo.helper
+  const { getPlugin } = this.bajo.helper
   getPlugin('bajoDb') // ensure bajoDb is loaded
+  const { parseFilter } = this.bajoWeb.helper
   const { recordGet, attachmentFind } = this.bajoDb.helper
-  const { getParams } = this.bajoWeb.helper
-  const params = await getParams(req, 'coll', 'id')
-  let { fields } = params
-  coll = coll ?? params.coll
-  if (isSet(options.fields)) fields = options.fields
-  coll = coll ?? params.coll
-  id = id ?? params.id ?? req.query.id
-  const name = pascalCase(coll)
-  const ret = await recordGet(name, id, { fields, dataOnly: false, req })
+  const { name, recId, opts } = await prepCrud.call(this, { coll, req, id, options, args: ['coll', 'id'] })
+  opts.filter = parseFilter(req)
+  const ret = await recordGet(name, recId, opts)
   const { attachment, stats, mimeType } = req.query
   if (attachment) ret.data._attachment = await attachmentFind(name, id, { stats, mimeType })
   return ret

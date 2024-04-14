@@ -1,14 +1,11 @@
+import prepCrud from '../../../lib/prep-crud.js'
+
 async function remove ({ coll, req, reply, id, options = {} }) {
-  const { pascalCase, getPlugin, isSet } = this.bajo.helper
+  const { getPlugin } = this.bajo.helper
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordRemove } = this.bajoDb.helper
-  const { getParams } = this.bajoWeb.helper
-  const params = await getParams(req, 'coll', 'id')
-  let { fields } = params
-  if (isSet(options.fields)) fields = options.fields
-  coll = coll ?? params.coll
-  id = id ?? params.id ?? req.query.id
-  return await recordRemove(pascalCase(coll), id, { fields, dataOnly: false, req })
+  const { name, recId, opts } = await prepCrud.call(this, { coll, req, id, options, args: ['coll', 'id'] })
+  return await recordRemove(name, recId, opts)
 }
 
 export default remove

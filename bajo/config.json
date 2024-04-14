@@ -20,7 +20,7 @@
   },
   "dbColl": {
     "dataOnly": false,
-    "noCount": true,
+    "count": false,
     "patchEnabled": false
   },
   "printRoutes": false,
@@ -37,5 +37,5 @@
   },
   "noIcon": true,
   "underPressure": false,
-  "dependencies": ["bajo-logger"]
+  "dependencies": ["bajo-logger", "bajo-db"]
 }

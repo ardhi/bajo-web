@@ -8,8 +8,7 @@ async function getParams (req, ...items) {
   if (req.query.fields) fields = map((req.query.fields ?? '').split(','), i => trim(i))
   const params = {
     fields,
-    dataOnly: get(cfg, 'dbColl.dataOnly', false),
-    noCount: get(cfg, 'dbColl.noCount', true),
+    count: get(cfg, 'dbColl.count', false),
     body: req.body
   }
   each(items, i => {
