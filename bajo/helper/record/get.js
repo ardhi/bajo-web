@@ -5,7 +5,7 @@ async function get ({ coll, req, reply, id, options = {} }) {
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { parseFilter } = this.bajoWeb.helper
   const { recordGet, attachmentFind } = this.bajoDb.helper
-  const { name, recId, opts } = await prepCrud.call(this, { coll, req, id, options, args: ['coll', 'id'] })
+  const { name, recId, opts } = prepCrud.call(this, { coll, req, id, options, args: ['coll', 'id'] })
   opts.filter = parseFilter(req)
   const ret = await recordGet(name, recId, opts)
   const { attachment, stats, mimeType } = req.query

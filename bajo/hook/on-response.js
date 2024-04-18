@@ -6,7 +6,7 @@ const onResponse = {
     if (reply.statusCode >= 300 && reply.statusCode < 400) method = 'warn'
     else if (reply.statusCode >= 400) method = 'error'
     log[method]('> %s:%s with a %d-status took %dms', req.method, req.url, reply.statusCode,
-      reply.elapsedTime.toFixed(3))
+      (reply.elapsedTime ?? 0).toFixed(3))
   }
 }
 

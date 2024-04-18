@@ -5,7 +5,7 @@ async function find ({ coll, req, reply, options = {} }) {
   getPlugin('bajoDb') // ensure bajoDb is loaded
   const { recordFindOne, attachmentFind } = this.bajoDb.helper
   const { parseFilter } = this.bajoWeb.helper
-  const { name, opts } = await prepCrud.call(this, { coll, req, options, args: ['coll'] })
+  const { name, opts } = prepCrud.call(this, { coll, req, options, args: ['coll'] })
   const cfg = getConfig('bajoWeb')
   opts.bboxLatField = req.query[cfg.qsKey.bboxLatField]
   opts.bboxLngField = req.query[cfg.qsKey.bboxLngField]

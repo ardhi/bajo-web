@@ -9,8 +9,8 @@ import underPressure from '@fastify/under-pressure'
 
 async function start () {
   const { importPkg, getConfig, generateId, runHook } = this.bajo.helper
-  const { cloneDeep } = await importPkg('lodash-es')
-  const queryString = await importPkg('bajo-extra:query-string')
+  const { cloneDeep } = this.bajo.helper._
+  const queryString = await importPkg('bajoExtra:query-string')
   const cfg = getConfig('bajoWeb')
   const optsFactory = cloneDeep(cfg.factory)
   const optsServer = cloneDeep(cfg.server)
@@ -35,7 +35,7 @@ async function start () {
   await routeHook.call(this)
   await boot.call(this)
   await runHook('bajoWeb:afterBootApp')
-  if (cfg.printRoutes) await printRoutes.call(this)
+  if (cfg.printRoutes) printRoutes.call(this)
   await instance.listen(cloneDeep(optsServer))
 }
 

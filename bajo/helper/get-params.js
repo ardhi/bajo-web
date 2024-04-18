@@ -1,6 +1,6 @@
-async function getParams (req, ...items) {
-  const { importPkg, getConfig } = this.bajo.helper
-  const { map, trim, get, each } = await importPkg('lodash-es')
+function getParams (req, ...items) {
+  const { getConfig } = this.bajo.helper
+  const { map, trim, get, each } = this.bajo.helper._
   const cfg = getConfig('bajoWeb')
   let fields
   req.query = req.query ?? {}

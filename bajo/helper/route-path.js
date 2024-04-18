@@ -13,7 +13,8 @@ function routePath (name, { query = {}, base = 'bajoWebMpa', params = {} } = {})
   }).join('/')
   let url = path
   if (ns) url = cfg.i18n.detectors.includes('path') ? `/${params.lang ?? ''}${routeDir(ns)}${path}` : `${routeDir(ns)}${path}`
-  const { qs, isEmpty } = this.bajoWebMpa.util
+  const { qs } = this.bajoWebMpa.util
+  const { isEmpty } = this.bajo.helper._
   queryString = defaultsDeep(query, qs.parse(queryString))
   if (!isEmpty(queryString)) url += '?' + qs.stringify(queryString)
   return url

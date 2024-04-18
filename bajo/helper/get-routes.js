@@ -1,6 +1,5 @@
-async function getRoutes (grouped, lite) {
-  const { importPkg } = this.bajo.helper
-  const { groupBy, orderBy, mapValues, map, pick } = await importPkg('lodash-es')
+function getRoutes (grouped, lite) {
+  const { groupBy, orderBy, mapValues, map, pick } = this.bajo.helper._
   const all = this.bajoWeb.routes
   let routes
   if (grouped) {

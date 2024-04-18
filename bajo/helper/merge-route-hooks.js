@@ -1,8 +1,7 @@
 import hookTypes from './hook-types.js'
 
 async function mergeRouteHooks (def, withHandler = true) {
-  const { importPkg } = this.bajo.helper
-  const { last, isFunction } = await importPkg('lodash-es')
+  const { last, isFunction } = this.bajo.helper._
   const hooks = [...hookTypes]
   const me = this
   if (withHandler) hooks.push('handler')

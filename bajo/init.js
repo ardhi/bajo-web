@@ -1,9 +1,9 @@
 async function init () {
   const { importPkg } = this.bajo.helper
-  const { isEmpty } = await importPkg('lodash-es')
+  const { isEmpty } = this.bajo.helper._
   this.bajoWeb.var = {
     isEmpty,
-    queryString: await importPkg('bajo-extra:query-string')
+    queryString: await importPkg('bajoExtra:query-string')
   }
 }
 
