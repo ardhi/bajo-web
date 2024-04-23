@@ -2,7 +2,8 @@ function parseFilter (req) {
   const { getConfig } = this.bajo.helper
   const cfg = getConfig('bajoWeb')
   const result = {}
-  for (const item of ['query', 'match', 'limit', 'page', 'skip', 'sort', 'sort', 'bbox']) {
+  const items = Object.keys(cfg.qsKey)
+  for (const item of items) {
     result[item] = req.query[cfg.qsKey[item]]
   }
   return result
