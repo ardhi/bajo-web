@@ -7,8 +7,6 @@ const onRequest = {
     req.site = cfg.siteInfo
     let msg = '< %s:%s from IP %s'
     if (req.headers['content-length']) msg += ', content length: %s'
-    let fwd = req.headers['x-forwarded-for'] ?? ''
-    if (!Array.isArray(fwd)) fwd = fwd.split(',').map(ip => ip.trim())
     log.info(msg, req.method, req.url, getIp(req), req.headers['content-length'])
   }
 }
