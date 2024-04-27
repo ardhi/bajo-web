@@ -9,7 +9,8 @@ async function find ({ coll, req, reply, options = {} }) {
   const cfg = getConfig('bajoWeb')
   opts.bboxLatField = req.query[cfg.qsKey.bboxLatField]
   opts.bboxLngField = req.query[cfg.qsKey.bboxLngField]
-  const ret = await recordFind(name, parseFilter(req), opts)
+  const filter = parseFilter(req)
+  const ret = await recordFind(name, filter, opts)
   const { attachment, stats, mimeType } = req.query
   if (attachment) {
     for (const d of ret.data) {
