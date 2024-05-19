@@ -1,6 +1,6 @@
 {
   "name": "bajo-web",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Web Server for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "@fastify/helmet": "^11.1.1",
     "@fastify/multipart": "^8.2.0",
     "@fastify/rate-limit": "^9.1.0",
+    "@fastify/reply-from": "^9.8.0",
     "@fastify/sensible": "^5.5.0",
     "@fastify/session": "^10.7.2",
     "@fastify/static": "github:ardhi/fastify-static",

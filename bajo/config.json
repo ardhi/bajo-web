@@ -1,5 +1,6 @@
 {
   "server": {
+    "host": "localhost",
     "port": 7777
   },
   "factory": {
@@ -37,5 +38,5 @@
   },
   "noIcon": true,
   "underPressure": false,
-  "dependencies": ["bajo-logger", "bajo-db"]
+  "dependencies": ["bajo-logger"]
 }
