@@ -36,7 +36,6 @@ async function start () {
   await appHook.call(this)
   await routeHook.call(this)
   await boot.call(this)
-  await runHook('bajoWeb:afterBootApp')
   if (cfg.printRoutes) printRoutes.call(this)
   await instance.listen(optsServer)
 }
