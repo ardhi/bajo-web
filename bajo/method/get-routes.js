@@ -1,6 +1,6 @@
 function getRoutes (grouped, lite) {
-  const { groupBy, orderBy, mapValues, map, pick } = this.bajo.helper._
-  const all = this.bajoWeb.routes
+  const { groupBy, orderBy, mapValues, map, pick } = this.app.bajo.lib._
+  const all = this.routes
   let routes
   if (grouped) {
     const group = groupBy(orderBy(all, ['url', 'method']), 'url')

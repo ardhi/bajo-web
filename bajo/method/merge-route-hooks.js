@@ -1,7 +1,7 @@
 import hookTypes from './hook-types.js'
 
 async function mergeRouteHooks (def, withHandler = true) {
-  const { last, isFunction } = this.bajo.helper._
+  const { last, isFunction } = this.app.bajo.lib._
   const hooks = [...hookTypes]
   const me = this
   if (withHandler) hooks.push('handler')

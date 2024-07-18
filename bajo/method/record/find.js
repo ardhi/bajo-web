@@ -1,15 +1,12 @@
 import prepCrud from '../../../lib/prep-crud.js'
 
 async function find ({ coll, req, reply, options = {} }) {
-  const { getPlugin, getConfig } = this.bajo.helper
-  getPlugin('bajoDb') // ensure bajoDb is loaded
-  const { recordFind, attachmentFind } = this.bajoDb.helper
-  const { parseFilter } = this.bajoWeb.helper
+  this.app.bajo.getPlugin('bajoDb') // ensure bajoDb is loaded
+  const { recordFind, attachmentFind } = this.app.bajoDb
   const { name, opts } = prepCrud.call(this, { coll, req, options, args: ['coll'] })
-  const cfg = getConfig('bajoWeb')
-  opts.bboxLatField = req.query[cfg.qsKey.bboxLatField]
-  opts.bboxLngField = req.query[cfg.qsKey.bboxLngField]
-  const filter = parseFilter(req)
+  opts.bboxLatField = req.query[this.config.qsKey.bboxLatField]
+  opts.bboxLngField = req.query[this.config.qsKey.bboxLngField]
+  const filter = this.parseFilter(req)
   const ret = await recordFind(name, filter, opts)
   const { attachment, stats, mimeType } = req.query
   if (attachment) {

@@ -10,22 +10,19 @@ import handleForward from '../lib/handle-forward.js'
 import handleRedirect from '../lib/handle-redirect.js'
 
 async function start () {
-  const { getConfig, generateId, runHook } = this.bajo.helper
-  const { cloneDeep } = this.bajo.helper._
-  const cfg = getConfig('bajoWeb')
-  const optsFactory = cloneDeep(cfg.factory)
-  const optsServer = cloneDeep(cfg.server)
-  optsFactory.logger = this.bajoLogger.instance.child(
+  const { generateId, runHook } = this.app.bajo
+  const cfg = this.getConfig()
+  cfg.factory.logger = this.app.bajoLogger.instance.child(
     {},
     { msgPrefix: '[bajoWeb] ' }
   )
-  optsFactory.genReqId = req => generateId()
-  optsFactory.disableRequestLogging = true
+  cfg.factory.genReqId = req => generateId()
+  cfg.factory.disableRequestLogging = true
 
-  const instance = fastify(optsFactory)
+  const instance = fastify(cfg.factory)
   instance.decorateRequest('lang', null)
   instance.decorateRequest('langDetector', null)
-  this.bajoWeb.instance = instance
+  this.instance = instance
   await instance.decorateRequest('site', null)
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(sensible)
@@ -37,7 +34,7 @@ async function start () {
   await routeHook.call(this)
   await boot.call(this)
   if (cfg.printRoutes) printRoutes.call(this)
-  await instance.listen(optsServer)
+  await instance.listen(cfg.server)
 }
 
 export default start

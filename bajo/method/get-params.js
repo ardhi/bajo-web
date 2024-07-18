@@ -1,17 +1,15 @@
 function getParams (req, ...items) {
-  const { getConfig } = this.bajo.helper
-  const { map, trim, get, each } = this.bajo.helper._
-  const cfg = getConfig('bajoWeb')
+  const { map, trim, get } = this.app.bajo.lib._
   let fields
   req.query = req.query ?? {}
   req.params = req.params ?? {}
   if (req.query.fields) fields = map((req.query.fields ?? '').split(','), i => trim(i))
   const params = {
     fields,
-    count: get(cfg, 'dbColl.count', false),
+    count: get(this, 'config.dbColl.count', false),
     body: req.body
   }
-  each(items, i => {
+  items.forEach(i => {
     params[i] = req.params[i]
   })
   return params

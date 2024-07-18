@@ -1,11 +1,11 @@
 import qs from 'querystring'
 
 function routePath (name, { query = {}, base = 'bajoWebMpa', params = {} } = {}) {
-  const { getConfig, defaultsDeep } = this.bajo.helper
-  const { isEmpty, get } = this.bajo.helper._
-  const { routeDir } = this.bajoWeb.helper
-  const { breakNsPath } = this.bajo.helper
-  const cfg = getConfig(base) ?? {}
+  // TODO: what if bajoWebMpa isn't loaded?
+  const { defaultsDeep } = this.app.bajo
+  const { isEmpty, get } = this.app.bajo.lib._
+  const { breakNsPath } = this.app.bajo
+  const cfg = this.app[base].config ?? {}
   let ns
   let fullPath
   if (name.startsWith('/')) fullPath = name
@@ -16,7 +16,7 @@ function routePath (name, { query = {}, base = 'bajoWebMpa', params = {} } = {})
   }).join('/')
   let url = path
   const langDetector = get(cfg, 'i18n.detectors', [])
-  if (ns) url = langDetector.includes('path') ? `/${params.lang ?? ''}${routeDir(ns)}${path}` : `${routeDir(ns)}${path}`
+  if (ns) url = langDetector.includes('path') ? `/${params.lang ?? ''}${this.routeDir(ns)}${path}` : `${this.routeDir(ns)}${path}`
   queryString = defaultsDeep(query, qs.parse(queryString))
   if (!isEmpty(queryString)) url += '?' + qs.stringify(queryString)
   return url

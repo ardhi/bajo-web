@@ -1,5 +1,5 @@
 async function init () {
-  if (this.bajoWeb.config.home === '/') this.bajoWeb.config.home = false
+  if (this.config.home === '/') this.config.home = false
 }
 
 export default init
