@@ -25,7 +25,7 @@
     "count": false,
     "patchEnabled": false
   },
-  "printRoutes": false,
+  "logRoutes": false,
   "siteInfo": {
     "title": "My Website",
     "orgName": "My Organization"

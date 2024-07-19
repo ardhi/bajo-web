@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 import appHook from '../lib/app-hook.js'
-import routeHook from '../lib/route-hook.js'
-import printRoutes from '../lib/print-routes.js'
+import routeHook from '../lib/webapp-scope/route-hook.js'
+import logRoutes from '../lib/log-routes.js'
 import { boot } from '../lib/app.js'
 import sensible from '@fastify/sensible'
 import noIcon from 'fastify-no-icon'
@@ -23,6 +23,7 @@ async function start () {
   instance.decorateRequest('lang', null)
   instance.decorateRequest('langDetector', null)
   this.instance = instance
+  this.routes = this.routes || []
   await instance.decorateRequest('site', null)
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(sensible)
@@ -31,10 +32,10 @@ async function start () {
   await handleRedirect.call(this, instance)
   await handleForward.call(this, instance)
   await appHook.call(this)
-  await routeHook.call(this)
+  await routeHook.call(this, this.name)
   await boot.call(this)
-  if (cfg.printRoutes) printRoutes.call(this)
   await instance.listen(cfg.server)
+  if (cfg.logRoutes) logRoutes.call(this)
 }
 
 export default start
