@@ -6,7 +6,7 @@ Plugin name: **bajoWeb**, alias: **web**
 
 > <br />**Attention**: I do NOT accept any pull request at the moment, thanks!<br /><br />
 
-Web framework for [Bajo Framework](https://github.com/ardhi/bajo).
+[Bajo](https://github.com/ardhi/bajo)'s Web Framework. Entirely based on [Fastify](https://github.com/fastify/fastify) and its ecosystem.
 
 ## Installation
 
