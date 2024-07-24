@@ -22,9 +22,9 @@ async function start () {
   const instance = fastify(cfg.factory)
   instance.decorateRequest('lang', null)
   instance.decorateRequest('langDetector', null)
+  instance.decorateRequest('site', null)
   this.instance = instance
   this.routes = this.routes || []
-  await instance.decorateRequest('site', null)
   await runHook('bajoWeb:afterCreateContext', instance)
   await instance.register(sensible)
   if (cfg.underPressure) await instance.register(underPressure)
